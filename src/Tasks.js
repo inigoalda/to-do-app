@@ -2,7 +2,7 @@ const Tasks = (props) => {
   return (
     <div>
       {props.items.map((item) => (
-        <div
+        item.visible && <div
           className="form-check"
           key={item.id}
           id="task"
@@ -12,7 +12,7 @@ const Tasks = (props) => {
             paddingBottom: item.id === props.items.length ? "0px" : "10px",
           }}
         >
-          <input className="form-check-input" type="checkbox" onChange={props.checkHandler}/>
+          <input className="form-check-input" type="checkbox" onChange={props.checkHandler} value={item.id} id={item.id} checked={item.completed} />
           <label className="form-check-label">{item.title}</label>
         </div>
       ))}

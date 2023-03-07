@@ -5,11 +5,16 @@ const Search = (props) => {
     props.setSearchTerm(event);
   };
 
-  const addNewHandler = (event) => {
-    props.setAddNew(event);
+  const destroyHandler = (event) => {
+    if (event.key === "Escape") {
+      props.setVisible(false);
+    }
   };
 
-  const destroyHandler = (event) => {
+  const addNewHandler = (event) => {
+    if (event.key === "Enter") {
+      props.setAddNew(event);
+    }
     if (event.key === "Escape") {
       props.setVisible(false);
     }
@@ -32,7 +37,7 @@ const Search = (props) => {
             type="text"
             className="form-control"
             placeholder={props.placeholder}
-            onKeyDown={destroyHandler}
+            onKeyDown={addNewHandler}
           />
           <div className="input-group-append">
             <button className="btn btn-outline-secondary" type="button">
